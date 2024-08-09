@@ -15,7 +15,9 @@ export default function ServerCard(props: { info: ServerInfo }) {
                 <p>{info.description}</p>
                 <div className="card-actions justify-start">
                     <ul>
-                        {info.plugins.map(item => {return <li key={item.name}>item</li>})}
+                        {info.plugins.map(item => {
+                            return <li key={item.name}>item</li>
+                        })}
                     </ul>
                 </div>
             </div>

@@ -6,7 +6,7 @@ import builtin_parsers from "@/lib/defaults/builtin_parsers";
 
 type step = { name: string, status: boolean };
 
-function NewInstanceModal(props: { parsers: RegisteredParser[], external_constructors: [string, number][]}) {
+function NewInstanceModal(props: { parsers: RegisteredParser[], external_constructors: [string, number][] }) {
     const {isOpen, closeModal} = useNewInstanceContext();
     const parsers = props.parsers != void (0) ? props.parsers : builtin_parsers;
 
@@ -36,7 +36,7 @@ function NewInstanceModal(props: { parsers: RegisteredParser[], external_constru
                     <div className="mb-4">
                         <ul className="steps">
                             {steps.map(step => <li key={"steps_" + step.name}
-                                           className={step.status ? "step w-1/2 mr-4 step-neutral" : "step w-1/2 mr-4"}>{step.name}</li>
+                                                   className={step.status ? "step w-1/2 mr-4 step-neutral" : "step w-1/2 mr-4"}>{step.name}</li>
                             )}
                         </ul>
                     </div>

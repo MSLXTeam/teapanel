@@ -9,7 +9,7 @@ import React from "react";
 import ServerCard from "@/components/card_server";
 
 const Content: React.FC = () => {
-    const { openModal } = useNewInstanceContext();
+    const {openModal} = useNewInstanceContext();
 
     return (
         <>

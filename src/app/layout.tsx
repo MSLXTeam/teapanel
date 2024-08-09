@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     title: "Tea Panel",
 };
 
-export default function RootLayout({ children }: Readonly<{
+export default function RootLayout({children}: Readonly<{
     children: React.ReactNode;
 }>) {
     return (
