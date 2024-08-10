@@ -43,12 +43,12 @@ export abstract class Plugin {
 async function loadPlugins(files: string[], disabled_plugins: string[]) {
     let loadedPlugins: Plugin[] = [];
     for (const file of files) {
-        const module = await import(file)
-        if (!(module.default instanceof Plugin)) {
+        const targetModule = await import(file)
+        if (!(targetModule.default instanceof Plugin)) {
             console.warn("插件[" + file + "]未正确实现主类,已跳过执行初始化操作");
             continue
         }
-        const entryPoint: Plugin = module.default;
+        const entryPoint: Plugin = targetModule.default;
         if (entryPoint.info.name in disabled_plugins) {
             console.log("插件[" + entryPoint.info.name + "]已被跳过")
             continue

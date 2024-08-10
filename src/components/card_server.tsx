@@ -17,9 +17,8 @@ export default function ServerCard(props: { info: ServerInfo }) {
                 <div className="card-actions justify-start">
                     <ul>
                         {info.plugins.map(item => {
-                            // eslint-disable-next-line react/jsx-no-undef
                             return <li key={item.name}><Link
-                                herf={"/server/" + info.name + "/settings/plugins" + item.name}>item</Link></li>
+                                href={"/server/" + info.name + "/settings/plugins" + item.name}>item</Link></li>
                         })}
                     </ul>
                 </div>
