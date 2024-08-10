@@ -1,4 +1,5 @@
-// pages/index.tsx
+'use client'
+
 import {FormEvent, KeyboardEvent, useEffect, useRef, useState} from 'react';
 
 export default function Terminal(props: { server_address: string }) {

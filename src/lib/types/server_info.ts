@@ -1,10 +1,10 @@
-import Image from "next/image"
+type PluginIcon = { name: string, description?: string, icon: string };
 
 type ServerInfo = {
     id: number,
     name: string,
     description: string,
-    plugins: typeof Image[],
+    plugins: PluginIcon[],
     status: number,
 }
 

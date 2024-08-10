@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Navbar() {
     return (<>
         <div className="px-2 py-2">
@@ -7,8 +9,8 @@ export default function Navbar() {
                 </div>
                 <div className="flex-none">
                     <ul className="menu menu-horizontal">
-                        <li><a>服务器列表</a></li>
-                        <li><a>设置</a></li>
+                        <li><Link href={"/"}>服务器列表</Link></li>
+                        <li><Link href={"/settings"}>设置</Link></li>
                     </ul>
                 </div>
                 <div className="flex-none gap-2">
