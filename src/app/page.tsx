@@ -8,6 +8,7 @@ import builtin_parsers from "@/lib/defaults/builtin_parsers";
 import React from "react";
 import ServerCard from "@/components/card_server";
 import ServerStatusCard from "@/components/server_status_card";
+import ModsNavbar from "@/components/subnavbars/mods_and_plugins";
 
 const Content: React.FC = () => {
     const {openModal} = useNewInstanceContext();
@@ -26,6 +27,7 @@ export default function Home() {
             <div>
                 <Navbar></Navbar>
                 <ServerNavbar name={""}></ServerNavbar>
+                <ModsNavbar server_name={""}></ModsNavbar>
                 <CreatingNewInstanceContextProvider>
                     <Content></Content>
                 </CreatingNewInstanceContextProvider>

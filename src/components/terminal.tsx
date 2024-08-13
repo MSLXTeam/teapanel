@@ -15,6 +15,7 @@ export default function Terminal(props: { server_address: string }) {
 
         webSocket.onopen = () => {
             console.log('WebSocket connection established');
+            setOutput((prevOutput) => [...prevOutput, "WebSocket连接已启动"]);
             // 可以在这里请求历史日志，或者服务器自动发送
         };
 
@@ -31,6 +32,7 @@ export default function Terminal(props: { server_address: string }) {
 
         webSocket.onclose = () => {
             console.log('WebSocket connection closed');
+            setOutput((prevOutput) => [...prevOutput, "WebSocket连接已关闭"]);
         };
 
         setWs(webSocket);
