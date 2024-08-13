@@ -1,10 +1,12 @@
 'use client'
 
-import {useState} from "react";
 import Link from "next/link";
 
-export default function ModsNavbar(props: { server_name: string }) {
-    const [showDisabledMods, setShowDisabledMods] = useState(false);
+export default function ModsNavbar(props: {
+    server_name: string,
+    currentStatus: boolean,
+    setShowDisabledModsAction: (bool: boolean) => void
+}) {
     return <>
         <div className="px-2 pt-1 pb-4">
             <div className="navbar bg-neutral max-h-8 rounded-lg text-neutral-content">
@@ -31,7 +33,7 @@ export default function ModsNavbar(props: { server_name: string }) {
                             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
                             <li>
                                 <button className="text-black"
-                                        onClick={() => setShowDisabledMods(!showDisabledMods)}>{showDisabledMods ? "显示" : "隐藏"}已禁用的Mod/插件
+                                        onClick={() => props.setShowDisabledModsAction(!props.currentStatus)}>{props.currentStatus ? "隐藏" : "显示"}已禁用的Mod/插件
                                 </button>
                             </li>
                         </ul>
