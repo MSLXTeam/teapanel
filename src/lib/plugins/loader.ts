@@ -25,10 +25,16 @@ export abstract class Plugin {
     onDisable?: () => void;
     onReload?: () => void;
 
-    protected constructor(info: PluginInfo, onLoad: () => void, onUnload: () => void,
-                          settingsPage?: (server_name: string) => React.JSX.Element,
-                          externalElements?: ExternalElement[],
-                          onEnable?: () => void, onDisable?: () => void, onReload?: () => void) {
+    protected constructor(
+        info: PluginInfo,
+        onLoad: () => void,
+        onUnload: () => void,
+        settingsPage?: (server_name: string) => React.JSX.Element,
+        externalElements?: ExternalElement[],
+        onEnable?: () => void,
+        onDisable?: () => void,
+        onReload?: () => void
+    ) {
         this.info = info;
         this.settingsPage = settingsPage;
         this.externalElements = externalElements;
@@ -40,34 +46,40 @@ export abstract class Plugin {
     }
 }
 
-async function loadPlugins(files: string[], disabled_plugins: string[]) {
-    let loadedPlugins: Plugin[] = [];
+async function loadPlugins(files: string[], disabledPlugins: Set<string>): Promise<Plugin[]> {
+    const loadedPlugins: Plugin[] = [];
     for (const file of files) {
-        const targetModule = await import(file)
-        if (!(targetModule.default instanceof Plugin)) {
-            console.warn("插件[" + file + "]未正确实现主类,已跳过执行初始化操作");
-            continue
+        try {
+            const targetModule = await import(file);
+            const entryPoint = targetModule.default;
+
+            if (!(entryPoint instanceof Plugin)) {
+                console.warn(`插件 [${file}] 未正确实现主类, 已跳过执行初始化操作`);
+                continue;
+            }
+
+            if (disabledPlugins.has(entryPoint.info.name)) {
+                console.log(`插件 [${entryPoint.info.name}] 已被跳过`);
+                continue;
+            }
+
+            if (entryPoint.settingsPage !== void(0)) {
+
+            }
+
+            entryPoint.onLoad();
+            entryPoint.onEnable?.();
+            loadedPlugins.push(entryPoint);
+        } catch (error) {
+            console.error(`加载插件 [${file}] 时出错:`, error);
         }
-        const entryPoint: Plugin = targetModule.default;
-        if (entryPoint.info.name in disabled_plugins) {
-            console.log("插件[" + entryPoint.info.name + "]已被跳过")
-            continue
-        }
-        entryPoint.onLoad()
-        if (entryPoint.onEnable === undefined) {
-            console.log("插件[" + entryPoint.info.name + "]未注册启用时方法,已跳过执行")
-        }
-        loadedPlugins.push(entryPoint);
     }
     return loadedPlugins;
 }
 
-function unloadPlugins(plugins: Plugin[]) {
+function unloadPlugins(plugins: Plugin[]): void {
     for (const plugin of plugins) {
-        if (plugin.onDisable === undefined) {
-            console.log("插件[" + plugin.info.name + "]未注册禁用时方法,已跳过执行")
-        }
-        plugin.onUnload()
-        // 这里应该写更复杂的逻辑...
+        plugin.onDisable?.();
+        plugin.onUnload();
     }
 }

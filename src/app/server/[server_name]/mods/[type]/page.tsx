@@ -3,7 +3,7 @@
 import ServerNavbar from "@/components/navbar_server";
 import ModsNavbar from "@/components/subnavbars/mods_and_plugins";
 import ModInfoCard from "@/components/mod_info_card";
-import { useState, useEffect } from "react";
+import {useState, useEffect, Suspense} from "react";
 import { useRouter } from "next/navigation";
 
 export default function ModsPage(props: { params: { server_name: string, type: string } }) {
@@ -72,11 +72,11 @@ export default function ModsPage(props: { params: { server_name: string, type: s
                         setShowDisabledMods(bool);
                     }}></ModsNavbar>
         <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-5">
-            {target.map(instance => (
+            <Suspense fallback={<div><p>Loading {props.params.type}...</p><p>Just a little more...</p></div>}>{target.map(instance => (
                 <div key={instance.name} className={!showDisabledMods && !instance.isEnabled ? "hidden" : ""}>
                     <ModInfoCard info={instance}/>
                 </div>
-            ))}
+            ))}</Suspense>
         </div>
     </>
 }

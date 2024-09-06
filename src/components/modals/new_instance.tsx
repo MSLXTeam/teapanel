@@ -8,7 +8,7 @@ type step = { name: string, status: boolean };
 
 function NewInstanceModal(props: { parsers: RegisteredParser[], external_constructors: [string, number][] }) {
     const {isOpen, closeModal} = useNewInstanceContext();
-    const parsers = props.parsers != void (0) ? props.parsers : builtin_parsers;
+    const parsers = props.parsers !== void (0) ? props.parsers : builtin_parsers;
 
     const [type, setType] = useState(TYPES.JAVA);
     const [parser, setParser] = useState(0);

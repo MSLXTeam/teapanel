@@ -8,7 +8,7 @@ export default function ModInfoCard(props: { info: ModInfo }) {
                     <div>
                         {props.info.icon === void (0) ? null :
                             <Image src={props.info.icon} alt={props.info.name}></Image>}
-                        <h1 className="text-xl">{props.info.name}</h1>
+                        <h1 className="text-2xl">{props.info.name}</h1>
                     </div>
                     <div className="justify-end">
                         {!props.info.isEnabled ? <div className="tooltip" data-tip="点击以启用">
