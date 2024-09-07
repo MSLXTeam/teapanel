@@ -8,10 +8,9 @@ export default function ModsNavbar(props: {
     setShowDisabledModsAction: (bool: boolean) => void
 }) {
     return <>
-        <div className="px-2 pt-1 pb-4">
-            <div className="navbar bg-neutral max-h-8 rounded-lg text-neutral-content">
+            <div className="navbar min-h-8 bg-neutral rounded-none text-neutral-content">
                 <div className="navbar-start">
-                    <a className="btn btn-ghost text-sm">插件和模组</a>
+                    <a className="text-sm">插件和模组</a>
                     <div className="dropdown">
                         <ul
                             tabIndex={0}
@@ -40,6 +39,5 @@ export default function ModsNavbar(props: {
                     </div>
                 </div>
             </div>
-        </div>
     </>
 }

@@ -12,7 +12,7 @@ const Content: React.FC = () => {
 
     return (
         <>
-            <div className="card bg-base-200 shadow-xl cursor-pointer px-4 py-4 mx-4 my-4 "
+            <div className="card bg-jb-list shadow-xl cursor-pointer px-4 py-4 mx-4 my-4 hover:bg-jb-active"
                  onClick={openModal}>
                 <div className="card-body">
                     <div style={{display: "inline-block"}} className="pr-3"><h2

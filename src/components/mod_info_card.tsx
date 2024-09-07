@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function ModInfoCard(props: { info: ModInfo }) {
     return <>
-        <div className="card bg-base-100 shadow-xl hover:shadow-2xl px-4 py-4 mx-4 my-4">
+        <div className="card bg-jb-list shadow-xl hover:shadow-2xl hover:bg-jb-active px-4 py-4 mx-4 my-4">
             <div className="card-body">
                 <div className="card-actions justify-start">
                     <div>

@@ -9,7 +9,7 @@ export default function ServerCard(props: { info: ServerInfo }) {
     const router = useRouter();
     const info = props.info;
     return (<>
-        <div className="card bg-base-100 shadow-xl cursor-pointer px-4 py-4 mx-4 my-4 hover:shadow-2xl" onClick={() => {
+        <div className="card bg-jb-list shadow-xl cursor-pointer px-4 py-4 mx-4 my-4 hover:bg-jb-active" onClick={() => {
             router.push("/server/" + info.name + "/console")
         }}>
             <div className="card-body">

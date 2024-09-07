@@ -13,7 +13,7 @@ export default function RootLayout({children}: Readonly<{
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="zh">
+        <html lang="zh" data-theme="winter">
         <body className={inter.className}>{children}</body>
         </html>
     );

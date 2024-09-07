@@ -1,3 +1,5 @@
+'use client'
+
 import ServerNavbar from "@/components/navbar_server";
 import ServerInfo from "@/lib/types/server_info";
 
@@ -20,13 +22,11 @@ export default function ServerSettingsPage(props: { params: { server_name: strin
                 <div className="space-y-4">
                     <label className="input input-bordered flex items-center gap-2">
                         实例名称 |
-                        <input type="text" placeholder="实例名称" value={server_info.name}
-                               className="grow"/>
+                        <input type="text" placeholder={server_info.name} className="grow"/>
                     </label>
                     <label className="input input-bordered flex items-center gap-2">
                         工作目录 |
-                        <input type="text" placeholder="工作目录"
-                               className="grow"/>
+                        <input type="text" placeholder="工作目录" className="grow"/>
                     </label>
                 </div>
             </div>
@@ -39,18 +39,15 @@ export default function ServerSettingsPage(props: { params: { server_name: strin
                 <div className="space-y-4">
                     <label className="input input-bordered flex items-center gap-2">
                         JDK |
-                        <input type="text" placeholder="JDK路径" value={server_info.name}
-                               className="grow"/>
+                        <input type="text" placeholder={server_info.name} className="grow"/>
                     </label>
                     <label className="input input-bordered flex items-center gap-2">
                         Jar文件 |
-                        <input type="text" placeholder="Jar文件路径"
-                               className="grow"/>
+                        <input type="text" placeholder="Jar文件路径" className="grow"/>
                     </label>
                     <label className="input input-bordered flex items-center gap-2">
                         JVM参数 |
-                        <input type="text" placeholder="JVM参数"
-                               className="grow"/>
+                        <input type="text" placeholder="JVM参数" className="grow"/>
                     </label>
                 </div>
             </div>

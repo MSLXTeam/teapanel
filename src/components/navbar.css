@@ -1,9 +1,8 @@
 .acrylic-background {
+    min-height: 48px !important;
     backdrop-filter: blur(10px); /* 亚克力磨砂效果 */
-    border-radius: 8px; /* 圆角 */
-    border: 1px solid rgba(255, 255, 255, 0.5); /* 边框 */
     position: relative; /* 设为相对定位以便使用伪元素 */
-    overflow: hidden;
+    max-height: 16px;
 }
 
 .acrylic-background::before {
@@ -16,4 +15,9 @@
     background: linear-gradient(135deg, rgb(0, 128, 0) 5%, rgb(43, 52, 64), rgb(43, 52, 64), rgb(43, 52, 64), rgb(43, 52, 64), rgb(43, 52, 64)); /* 深绿色渐变 */
     opacity: 0.5; /* 控制渐变的透明度 */
     z-index: -1; /* 确保背景在下面 */
+}
+
+.mini-title {
+    font-size: 1.125rem;
+    line-height: 1.25rem;
 }
